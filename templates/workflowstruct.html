@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="../static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bower_components/ionicons/css/ionicons.min.css">
+
+
+    <script src="../static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../static/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="../static/assets/js/main.js"> </script>
+
+</head>
+<body data-spy="scroll" data-target="#site-nav">
+    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbar-items">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- navigation menu -->
+                </ul>
+            </div>
+        </div><!-- /.container -->
+    </nav>
+
+    <header id="site-header" class="site-header valign-center">
+      <div class="intro" style="margin-top : 50px; color : white;">
+          <center>
+            <h1>Workflow Designer</h1>
+            <p style="font-size : 20px;">Design and create various workflows<p>
+          </center>
+      </div>
+      <br>
+      <center><u><h3>Workflow Structure</h3></u></center>
+      <br>
+      <br>
+    </header>
+
+
+    <body data-spy="scroll" data-target="#site-nav">
+        <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbar-items">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- navigation menu -->
+                    </ul>
+                </div>
+            </div><!-- /.container -->
+        </nav>
+
+    <section id="workflowstruct" class="workflowstruct">
+            <div class="container">
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-8">
+                    <table class="table table-light">
+                      <thead>
+                        <tr style="color:white;">
+                          <th scope="col">Workflow ID</th>
+                          <th scope="col">Workflow name</th>
+                          <th scope="col">Number of stages</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>{{wf[0][0]}}</td>
+                            <td>{{wf[0][1]}}</td>
+                            <td>{{wf[0][2]}}</td>
+                          </tr>
+                      </tbody>
+                    </table>
+
+                   <br>
+                   <table class="table table-light">
+                     <thead>
+                       <tr style="color:white;">
+                         <th scope="col">Stage ID</th>
+                         <th scope="col">Stage Name</th>
+                         <th scope="col">Number of Actions</th>
+                         <th scope="col">Actor ID</th>
+                         <th scope="col">Actor Name</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       {% for p in data %}
+                         <tr>
+                           <td>{{p[0]}}</td>
+                           <td>{{p[1]}}</td>
+                           <td>{{p[2]}}</td>
+                           <td>{{p[3]}}</td>
+                           <td>{{p[4]}}</td>
+                         </tr>
+                       {% endfor %}
+                     </tbody>
+                   </table>
+                 </div>
+               </div>
+             </div>
+        </section>
+    </body>
+    <style>
+        body{
+          height:770px;
+          background-image: linear-gradient(rgb(128, 170, 255),rgb(204, 179, 255));
+        }
+        .table td,th {
+          text-align: center;
+        }
+    </style>
+</body>
+</html>

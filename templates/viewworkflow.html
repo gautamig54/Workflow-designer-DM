@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Workflow Designer</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bower_components/ionicons/css/ionicons.min.css">
+
+
+    <script src="../static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../static/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="../static/assets/js/main.js"> </script>
+
+</head>
+<body data-spy="scroll" data-target="#site-nav">
+    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbar-items">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- navigation menu -->
+                </ul>
+            </div>
+        </div><!-- /.container -->
+    </nav
+
+    <body data-spy="scroll" data-target="#site-nav">
+        <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbar-items">
+                    <ul class="nav navbar-nav navbar-right">
+                      <!-- navigation menu -->
+                    </ul>
+                </div>
+            </div><!-- /.container -->
+        </nav>
+
+        <header id="site-header" class="site-header valign-center">
+          <div class="intro" style="margin-top : 50px; color : white;">
+              <center>
+                <h1>Workflow Designer</h1>
+                <p style="font-size : 20px;">Design and create various workflows<p>
+              </center>
+          </div>
+          <br>
+          <center><u><h3>WorkFlow {{workflow[1]}} Info</h3></u></center>
+        </header>
+
+    <section id="viewworkflow" class="viewworkflow">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="section-title"></h3>
+                    </div>
+                </div>
+                <center>
+                <form action="/instancewf" id="iwf-form" method="post">
+                    <div class="row">
+                        <div class="col-md-12" id="registration-msg" style="display:none;">
+                            <div class="alert"></div>
+                        </div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                              <input type="hidden" class="form-control" id="wf_id" name="wf_id" value={{wf_id}} >
+                              <script>console.log(wf_id)</script>
+                            </div>
+                              <div class="form-group">
+                                <p style="font-size:20px;">Number of Stages: {{workflow[3]}}</p>
+                              </div>
+
+                              <table class="table table-light">
+                                <thead>
+                                  <tr style="color:white;">
+                                    <th scope="col">Stage name</th>
+                                    <th scope="col">Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {% for p in data %}
+                                    <tr>
+                                      <td>{{p[0][1]}}</td>
+                                      <td>{{p[1]}}</td>
+                                    </tr>
+                                  {% endfor %}
+                                </tbody>
+                              </table>
+                              <br>
+                              <button type="submit" class="btn btn-black btn-primary" name="instancewf" id="instancewf">Use Workflow</button>
+                              <script type=text/javascript>
+
+                                     $('#instancewf').bind('click', function() {
+                                       console.log("Hi")
+
+                                      $.getJSON('/instancewf',
+                                  function() {
+                                  //do nothing
+                                  });
+                                 });
+                                 </script>
+                            <div class="coltxt" id=myg name=myg></div>
+                        </div>
+                    </div>
+                </form>
+              </center>
+            </div>
+        </section>
+
+        <style>
+            body{
+              height:770px;
+              background-image: linear-gradient(rgb(128, 170, 255),rgb(204, 179, 255));
+            }
+            .table td,th {
+              text-align: center;
+            }
+        </style>
+
+
+    </body>
+</body>
+</html>

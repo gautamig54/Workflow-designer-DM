@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Workflow Designer</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bower_components/ionicons/css/ionicons.min.css">
+
+
+    <script src="../static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../static/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="../static/assets/js/main.js"> </script>
+
+</head>
+<body data-spy="scroll" data-target="#site-nav">
+    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbar-items">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- navigation menu -->
+                </ul>
+            </div>
+        </div><!-- /.container -->
+    </nav>
+
+    <header id="site-header" class="site-header valign-center">
+      <div class="intro" style="margin-top : 50px; color : white;">
+          <center>
+            <h1>Workflow Designer</h1>
+            <p style="font-size : 20px;">Design and create various workflows<p>
+          </center>
+      </div>
+      <br>
+      <center><u><h3>Design Stage Transition</h3></u></center>
+    </header>
+    <br>
+<section id="stageTransition" class="stageTransition">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title"></h3>
+                </div>
+            </div>
+
+            <form action="/stageTransition" id="ud-form" method="post">
+                <div class="row">
+                    <div class="col-md-12" id="registration-msg" style="display:none;">
+                        <div class="alert"></div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="u_id" name="u_id" value={{u_id}} readonly>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="wf_id" name="wf_id" value={{wf_id}} readonly>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-4">
+                          <h5>Workflow Name :</h5>
+                        </div>
+                        <div class="col-sm-8">
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="wfname" value="{{wfname}}" readonly>
+                        </div>
+                      </div>
+                    </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="stage_id" name="stage_id" value={{stage_id}} readonly>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="stagenumber" name="stagenumber" value={{stagenumber}} readonly>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <h5>Stage Name :</h5>
+                          </div>
+                          <div class="col-sm-8">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="stagename" value = "{{stagename}}" readonly>
+                        </div>
+                      </div>
+                    </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="action_id" name="action_id" value={{action_id}} readonly>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="actionNumber" name="actionNumber" value={{actionNumber}} readonly>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <h5>Action Name :</h5>
+                          </div>
+                          <div class="col-sm-8">
+                        <div class="form-group">
+                              <input type="text" class="form-control" id="actionName" name="actionName" value="{{actionName}}" readonly>
+                        </div>
+                      </div>
+                    </div>
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <h5>Next stage ID :</h5>
+                          </div>
+                          <div class="col-sm-8">
+                        <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Next Stage ID" id="transitionStateId" name="transitionStateId" required>
+                        </div>
+                      </div>
+                    </div>
+                        <button type="submit" class="btn btn-black btn-primary btn-lg btn-block" name="next" id="next">Next</button>
+                      </div>
+                      <div class="col-sm-2">
+                        <center><div style="margin-left: 70px;border-left: 1px solid white; height: 500px;"></div></center>
+                      </div>
+                      <div class="col-sm-5">
+                        <p style="font-size: 30px;"> Stages in {{wfname}} workflow: </p><br>
+                        <table class="table table-light">
+                          <thead>
+                            <tr style="color:white;">
+                              <th scope="col">Stage ID</th>
+                              <th scope="col">Stage Name</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for p in data %}
+                              <tr>
+                                <td>{{p[0]}}</td>
+                                <td>{{p[2]}}</td>
+                              </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                        <div class="coltxt" id=myg name=myg></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+</section>
+<style>
+    body{
+      height:770px;
+      background-image: linear-gradient(rgb(128, 170, 255),rgb(204, 179, 255));
+    }
+    .table td,th {
+      text-align: center;
+    }
+</style>
+
+
+
+</body>
+</html>
